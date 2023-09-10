@@ -1,0 +1,89 @@
+<devicedata>
+	<copyright>BP</copyright>
+	<creator>BP</creator>
+	<manufacturer>BP</manufacturer>
+	<name>HA Lock</name>
+	<model>HA Lock</model>
+	<created>09/10/2023 12:00</created>
+	<modified>09/10/2023 12:00</modified>
+	<version>1</version>
+	<control>lua_gen</control>
+	<controlmethod>IP</controlmethod>
+	<driver>DriverWorks</driver>
+	<combo>false</combo>
+	<composer_categories>
+		<category>Lock</category>
+	</composer_categories>
+	<config>
+		<script jit="1" file="driver.lua"/>
+		<properties>
+			<property>
+				<name>Entity ID</name>
+				<type>STRING</type>
+				<readonly>false</readonly>
+				<default>lock.front_door_lock</default>
+			</property>
+			<property>
+				<name>Driver Version</name>
+				<default></default>
+				<type>STRING</type>
+				<readonly>true</readonly>
+			</property>
+			<property>
+				<name>Debug Mode</name>
+				<type>LIST</type>
+				<items>
+					<item>Off</item>
+					<item>On</item>
+				</items>
+				<default>Off</default>
+				<readonly>false</readonly>
+			</property>
+		</properties>
+		<actions>
+		</actions>
+		<commands/>
+	</config>
+	<proxies>
+		<proxy proxybindingid="5001" primary="True" name="HA Lock">lock</proxy>
+	</proxies>
+	<capabilities>
+	</capabilities>
+	<events/>
+	<lock_settings>
+		<lock_mode>normal</lock_mode>
+		<language>English</language>
+		<one_touch_locking>false</one_touch_locking>
+	</lock_settings>
+	<connections>
+		<connection>
+			<id>999</id>
+			<facing>1</facing>
+			<type>1</type>
+			<connectionname>Device Link</connectionname>
+			<consumer>True</consumer>
+			<classes>
+				<class>
+					<classname>HA_DEVICE</classname>
+					<autobind>True</autobind>
+				</class>
+			</classes>
+		</connection>
+		<connection>
+			<id>5001</id>
+			<facing>6</facing>
+			<connectionname>Lock</connectionname>
+			<type>2</type>
+			<consumer>false</consumer>
+			<audiosource>false</audiosource>
+			<videosource>false</videosource>
+			<linelevel>false</linelevel>
+			<classes>
+				<class>
+					<classname>LOCK</classname>
+				</class>
+			</classes>
+			<hidden>True</hidden>
+		</connection>
+	</connections>
+</devicedata>
