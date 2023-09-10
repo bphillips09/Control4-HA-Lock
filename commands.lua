@@ -1,3 +1,45 @@
+function RFP.LOCK(idBinding, strCommand)
+	print("--proxy lock--")
+
+	LockControl("unlock")
+end
+
+function RFP.TOGGLE(idBinding, strCommand)
+	print("--proxy lock--")
+
+	if LOCK_STATE == "locked" then
+		RFP:UNLOCK(strCommand)
+	else
+		RFP:LOCK(strCommand)
+	end
+
+end
+
+function RFP.UNLOCK(idBinding, strCommand)
+	print("--proxy unlock--")
+
+	LockControl("unlock")
+end
+
+function LockControl(service)
+	local switchServiceCall = {
+		domain = "lock",
+		service = service,
+
+		service_data = {},
+
+		target = {
+			entity_id = EntityID
+		}
+	}
+
+	local tParams = {
+		JSON = JSON:encode(switchServiceCall)
+	}
+
+	C4:SendToProxy(999, "HA_CALL_SERVICE", tParams)
+end
+
 function RFP.RECEIEVE_STATE(idBinding, strCommand, tParams)
     local jsonData = JSON:decode(tParams.response)
 

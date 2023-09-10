@@ -15,7 +15,7 @@
 		<category>Lock</category>
 	</composer_categories>
 	<config>
-		<script jit="1" file="driver.lua"/>
+		<script jit="1" file="Control4-HA-Base/driver.lua"/>
 		<properties>
 			<property>
 				<name>Entity ID</name>
