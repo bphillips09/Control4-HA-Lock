@@ -24,6 +24,12 @@
 				<default>lock.front_door_lock</default>
 			</property>
 			<property>
+				<name>Lock Code</name>
+				<type>STRING</type>
+				<readonly>false</readonly>
+				<default></default>
+			</property>
+			<property>
 				<name>Driver Version</name>
 				<default></default>
 				<type>STRING</type>

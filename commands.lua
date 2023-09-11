@@ -1,7 +1,7 @@
 function RFP.LOCK(idBinding, strCommand)
 	print("--proxy lock--")
 
-	LockControl("unlock")
+	LockControl("lock")
 end
 
 function RFP.TOGGLE(idBinding, strCommand)
@@ -22,6 +22,8 @@ function RFP.UNLOCK(idBinding, strCommand)
 end
 
 function LockControl(service)
+    local lockCode = Properties["Lock Code"]
+
 	local switchServiceCall = {
 		domain = "lock",
 		service = service,
@@ -32,6 +34,12 @@ function LockControl(service)
 			entity_id = EntityID
 		}
 	}
+
+    if lockCode ~= nil and lockCode ~= "" then
+        switchServiceCall.service_data = {
+            code = lockCode
+        }
+    end
 
 	local tParams = {
 		JSON = JSON:encode(switchServiceCall)
